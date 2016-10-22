@@ -1,24 +1,17 @@
-# README
+# PSC Bookings
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the bookings engine for PSC, allowing students to book rooms and gear, and staff to manage these bookings.
 
-Things you may want to cover:
+#### Dev setup
 
-* Ruby version
+We're running in docker, so the idea is:
 
-* System dependencies
+`docker compose build`
 
-* Configuration
+`docker compose up`
 
-* Database creation
+If it's the first time you're running it, you'll need to create some databases
 
-* Database initialization
+`docker compose run web bundle exec rake db:create`
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+If you're getting an error message such as the rails server is already running, just rm _tmp/pids/server.pid_
