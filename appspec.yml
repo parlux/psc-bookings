@@ -1,8 +1,8 @@
 version: 0.0
 os: linux
 files:
-  - source: source
-    destination: /apps/psc-bookings
+  - source: /
+    destination: /app/psc-bookings
 hooks:
   AfterInstall:
     - location: scripts/AfterInstall.sh
