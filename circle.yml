@@ -9,5 +9,5 @@ deployment:
           revision_type: S3
           s3_location:
             bucket: psc-bookings
-	    key_pattern: apps/psc-staging-{SHORT_COMMIT}-{BUILD_NUM}
+            key_pattern: apps/psc-staging-{SHORT_COMMIT}-{BUILD_NUM}
         deployment_group: psc-staging-group
