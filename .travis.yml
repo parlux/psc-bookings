@@ -14,3 +14,4 @@ deploy:
   application: psc-staging
   deployment_group: psc-staging-group
   region: ap-southeast-2
+  revision_type: github
