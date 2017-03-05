@@ -1,5 +1,5 @@
 class TestController < ApplicationController
   def show
-    render plain: 'hello jerry!!'
+    render plain: "We're looking good Thriney!"
   end
 end
