@@ -5,13 +5,23 @@ script:
 - bin/rake db:create db:migrate RAILS_ENV=test
 - bin/rake
 deploy:
+- provider: s3
+  access_key_id: AKIAJEZPFKYLOTFPZ2ZQ
+  secret_access_key: &1
+    secure: IJBbFUH85OntzQ9w7EcO9jE/JT+T9698zSOy3obxET+2BO/lyr5C6u4t4PZy00pPAEjpcMtU/vB9Lza9YM7vmR6Ol7GPi7SRbbEk1ZrxioZNm4PzcwljVLu3Xkx1vyWmEWEVF9bFNoJt1PjSe6YdgokKrlxzoDD/tIazgZdjc3mq6YK4QUgwaPjS3P6skoUQ4dziJrp2b5lOA3V1McgP9mvhJgRfy8pLb1Dxt3Yv3Y0/tJaGjKs1bZFwSl6UM51wlyvHgMQUaV1HV9b4CrImBM91ftwFklu966dFSG1fGf58g8skbB/rHSY4Cc+Q/pFw34bVV5XL6OF2MAmhG81qw90LJQZJLJtDwF8zYqICDCWaSWSXF8S/sgEz33z4YDAaiYtx6SO03KY21lNuPyKxQUio9pTWaXVg3XOBqP8MD6fPY0VnGrgE8bbwP8RY4X3JTGwg32r2b/zmV2DWeb5gOpjUnxJ4KJJyKcctTlpa0Qx2BowOH3D34JKMJPlXc4QoFzVJODFTw4+Myu+/qQI7YdB8PGCTbdRf+iWSCkt9IcksJ/e36LXsgSHtAKDH596aN3mNsS3/nnukTfLHL+1f8nsJCMDUSKkkoD5LofnkVDDKUuX7ReWDwUst8BP+ZguJaQGlqaX6ckqTr+8tl4MTf3qKDnerZf1PT/MzC80LzIw=
+  local_dir: dpl_cd_upload
+  skip_cleanup: true
+  on: &2
+    repo: parlux/psc-bookings
+  bucket: psc-bookings
 - provider: codedeploy
-  access_key_id:
-    secure: "jFxRRMgJH1ZNu3rtI/6KsE3yMTggdeir3zeRI0yUrsGFLOn3qnN7ehYwM2SOLUCHjeJr1Dfr8RkOwcoJDj2nR283hi0CUrSZ9RzVSKS88Y5VnwGRdEA7Q1KLySwRcbWSGsS9PJrwn4rVYI9uKzkrbA6P8ggwDS7PBFeepsREvOY+TEtfKoujrt9Gs94IGoMK2805iRwwzmETAtBJju/k5uc9Mj+RUxIZ68leOzjx4XnAX8YSixnDZDI4+qt5n+SkWChBtE16vkZbA9JX2UN95PxBbi4AiqMaFvhMEohAMHZdHdIN+x7AlWGNRARIvnAjpoxMsbDbRRniYjcht8awKLbGsNgqvCl5zREooFe4tCdflm7RZ6rzrptCFph4gC+hNZmRlh1rKmeZl9VtHu2yOdyWzneaRKtkt4u06GSl9HsiYOmyaAAqNrotbc5BicdVMqEpe1Y8AuZCUIYn5F4kRKynGXnUOFFzrKhz893xX5yz6y+Zs07xWMgdGhccji3GsHh5mDqFKh7Ct4ne7bRPd4FMUr3Rm81YOlQqu+UWf98x+zYnTAT5KdVyD+WNHUxDtyGkwmuxxxUaNFoOxPWsOmDQMrEu1FeB1MxEN/5pG76Hc9oG+3DpHTUyKeLglxpMS/zYNod5bnnjc5M4khKaYeRrZAmjs/bBeBKoGE3s59Y="
-  secret_access_key:
-    secure: "G2gVT0lOY8OqHWAnypTOnCtJ1CtN+pOeptIwAhEnuic7/Y7hXRt4r8aDorR/fCMJWiXZj8TUF3V7W1uggRK2GQV/n1YIw9zJbyjrQPojA+0ELBQmsLrTvjNfV5aXOZahfgJMSNx3MPgFjZvhV1e/f3LPX5xiQbhRDb+bokmID7Pz4kaKoFCL4Is4Tn80y/LQ+Yzrunk+ltYRAgTDwBUiG7BDBR41FwsZkVPKiWcE+QNLxWl9pEQL8tlcQviK+ty19hK1z2+/ezXPHyLfiOkB+wIb1N1tTHWisJsL0S+A+bBv9ar+KLUhwUmxlo35T/5/wzaMk1NboPx5w9zqxsC8nU/STF51xDGRCsgzZXUOaenkxW438SC0lTD791IykXiPHJVPBCYxI6f8qddNZZYFmcauxvlhPnLfmxiihBKGFwKDxdSI3wsR1GZ+SC2dQxlCwdtGXAY0JK3t7chkq5hINBrBSfkER79AZYj12Es1Ue9vGw0vCJZYtGMnC5tAoC16z9BbOEdbrNlv/Uca1cs4E/fk5ogxCY5Q0lfZh9LeYRFDLX6O447ACfccDSGv1wkhmiy2jRWM9PWQxTaMaN9Z1dvuV8s2YZC8mmVznmBphzC9030bj3QwjIAx+ZnZdJnouaq2C7JvL2PrJW4hunCCO0tFRhJMQYw5kqJJ5n5jPYA="
-  bucket: "psc-bookings"
-  key: PscBookings.zip
+  access_key_id: AKIAJEZPFKYLOTFPZ2ZQ
+  secret_access_key: *1
+  bucket: psc-bookings
+  key: PSCBookings
   application: psc-staging
   deployment_group: psc-staging-group
-  region: ap-southeast-2
+  on: *2
+before_deploy:
+- mkdir -p dpl_cd_upload
+- mv '' dpl_cd_upload/''
