@@ -22,6 +22,3 @@ deploy:
   application: psc-staging
   deployment_group: psc-staging-group
   on: *2
-before_deploy:
-- mkdir -p dpl_cd_upload
-- mv '' dpl_cd_upload/''
