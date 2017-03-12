@@ -4,6 +4,10 @@ files:
   - source: /
     destination: /app/psc-bookings
 hooks:
+  BeforeInstall:
+    - location: scripts/BeforeInstall.sh
+      timeout: 180
+      runas: deploy
   AfterInstall:
     - location: scripts/AfterInstall.sh
       timeout: 180
