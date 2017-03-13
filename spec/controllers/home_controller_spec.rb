@@ -24,4 +24,14 @@ RSpec.describe HomeController, :type => :controller do
       end
     end
   end
+
+  context 'When not logged in' do
+    describe 'GET index' do
+      subject { get(:index) }
+
+      it 'redirects to the login page' do
+        expect(subject).to redirect_to(new_user_session_url)
+      end
+    end
+  end
 end
