@@ -12,4 +12,12 @@ module ControllerMacros
       sign_in FactoryGirl.create(:user)
     end
   end
+
+  def login_random
+    if rand(0..1) == 0
+      login_user
+    else
+      login_admin
+    end
+  end
 end

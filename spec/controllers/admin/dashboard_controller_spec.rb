@@ -1,16 +1,17 @@
 require "rails_helper"
 
 RSpec.describe Admin::DashboardController, :type => :controller do
-  context 'When logged in as admin' do
-    login_admin
-    let(:unordered_bookings) { double('Bookings', order: bookings) }
-    let(:bookings) { [ instance_double(Booking), instance_double(Booking)] }
+  let(:unordered_bookings) { double('Bookings', order: bookings) }
+  let(:bookings) { [ instance_double(Booking), instance_double(Booking)] }
 
-    before do
-      allow(Booking).to receive(:all).and_return(unordered_bookings)
-    end
+  before do
+    allow(Booking).to receive(:all).and_return(unordered_bookings)
+  end
 
-    describe 'GET index' do
+  describe 'GET index' do
+    context 'When logged in as admin' do
+      login_admin
+
       before do
         get :index
       end
@@ -23,26 +24,26 @@ RSpec.describe Admin::DashboardController, :type => :controller do
         expect(assigns(:bookings)).to eq(bookings)
       end
     end
-  end
 
-  context 'When not logged in' do
-    describe 'GET index' do
-      subject { get :index }
+    context 'When insufficient priviledges' do
+      login_user
 
-      it 'redirects back to the home page' do
-        expect(subject).to redirect_to(new_user_session_url)
+      before do
+        get :index
       end
-    end
-  end
-
-  context 'When insufficient priviledges' do
-    login_user
-
-    describe 'GET index' do
-      subject { get :index }
 
       it 'redirects back to the home page' do
         expect(subject).to redirect_to(root_url)
+      end
+    end
+
+    context 'When not logged in' do
+      before do
+        get :index
+      end
+
+      it 'redirects back to the home page' do
+        expect(subject).to redirect_to(new_user_session_url)
       end
     end
   end
