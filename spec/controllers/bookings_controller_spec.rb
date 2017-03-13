@@ -23,15 +23,15 @@ RSpec.describe BookingsController, :type => :controller do
         expect(assigns(:booking)).to eq(Booking.new)
       end
     end
-  end
 
-  context 'When not logged in' do
-    before do
-      get :new
-    end
+    context 'When not logged in' do
+      before do
+        get :new
+      end
 
-    it 'redirects to the login page' do
-      expect(response).to redirect_to(new_user_session_url)
+      it 'redirects to the login page' do
+        expect(response).to redirect_to(new_user_session_url)
+      end
     end
   end
 end
