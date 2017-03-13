@@ -1,7 +1,8 @@
 class BookingsController < ApplicationController
+  before_action :check_booking_ownership!, only: [:show]
+
   def new
     @booking = Booking.new
-    @presenter = BookingsPresenter.new
   end
 
   def create
@@ -15,10 +16,19 @@ class BookingsController < ApplicationController
     booking.user = current_user
     booking.save
 
-    redirect_to booking_path(booking)
+    redirect_to booking_path(booking.id)
   end
 
   def show
     @booking = Booking.find(params[:id])
+  end
+
+  private
+
+  def check_booking_ownership!
+    booking = Booking.find(params[:id])
+    if booking.user != current_user
+      redirect_to root_path
+    end
   end
 end
