@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'aws-sdk-rails', '~> 1.0'
 gem 'cancan', '~> 1.6'
 gem 'devise', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
