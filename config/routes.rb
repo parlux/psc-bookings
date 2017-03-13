@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   get '/admin', to: 'admin/dashboard#index'
-  get '/bookings', to: 'bookings/home#index'
+
+  resources :bookings, only: [ :new, :create, :show ]
 end

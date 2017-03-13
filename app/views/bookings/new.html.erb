@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>Hi student, looking to book something?</h1>
+
+  <%= form_for @booking, url: {action: "create"} do |f| %>
+    Room: <%= f.select(:room, options_for_select(Booking.rooms)) %><br>
+    Session time: <%= f.select(:session_time, options_for_select(Booking.session_times)) %><br>
+    Session date: <%= f.date_select :session_date %><br>
+    <%= f.submit "Create", class: 'btn btn-success' %>
+  <% end %>
+
+</div>

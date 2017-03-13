@@ -3,7 +3,7 @@ class HomeController < ApplicationController
     if current_user.admin?
       redirect_to admin_path
     elsif current_user.student?
-      redirect_to bookings_path
+      redirect_to new_booking_path
     else
       render plain: "We should't be here..."
     end

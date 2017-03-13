@@ -17,6 +17,14 @@
       <p class="alert alert-info"><%= alert %></p>
       <% end %>
     </div>
+
+    <div class="container">
+      <header>
+        <div class="d-flex flex-row-reverse">
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-primary' %>
+        </div>
+      </header>
+    </div>
     <%= yield %>
   </body>
 </html>

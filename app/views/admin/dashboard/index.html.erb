@@ -1,7 +1,11 @@
 <div class="container">
-  <div class="d-flex flex-row-reverse">
-    <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-primary' %>
-  </div>
+  <h2>Hello, <%= @current_user.email %>!</h2>
 
-  <h2>Hello, admin <%= @current_user %>!</h2>
+  <%= month_calendar events: @bookings do |date, bookings| %>
+    <%= date.day %>
+
+    <% bookings.each do |booking| %>
+      <div><%= "#{booking.session_time} - #{booking.room}" %></div>
+    <% end %>
+  <% end %>
 </div>

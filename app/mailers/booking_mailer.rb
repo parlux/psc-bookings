@@ -1,8 +1,9 @@
 class BookingMailer < ApplicationMailer
-  default from: 'anyone@psc-bookings.paulc.in'
+  default from: 'bookings@psc-bookings.paulc.in',
+          to: "ENV[ADMIN_EMAILS]" || 'test@test.com'
 
-  def bookings_email(user)
+  def booking_email(user:)
     @user = user
-    mail(to: 'paulcarnibella@gmail.com', subject: 'You have a booking')
+    mail(subject: 'You have a booking')
   end
 end

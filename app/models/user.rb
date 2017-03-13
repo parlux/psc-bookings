@@ -7,4 +7,6 @@ class User < ApplicationRecord
   enum role: [ :admin, :student ]
 
   validates :role, presence: true
+
+  has_many :bookings
 end
