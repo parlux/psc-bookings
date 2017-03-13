@@ -1,6 +1,6 @@
 class BookingMailer < ApplicationMailer
   default from: 'bookings@psc-bookings.paulc.in',
-          to: "ENV[ADMIN_EMAILS]" || 'test@test.com'
+          to: ENV["ADMIN_EMAILS"] || 'test@test.com'
 
   def booking_email(user:)
     @user = user
